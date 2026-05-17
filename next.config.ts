@@ -1,9 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Minimal config - keeping it simple for the template
   turbopack: {
     root: __dirname,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.scdn.co", // Spotify album/artist images
+      },
+      {
+        protocol: "https",
+        hostname: "mosaic.scdn.co",
+      },
+      {
+        protocol: "https",
+        hostname: "*.spotifycdn.com",
+      },
+    ],
   },
 };
 

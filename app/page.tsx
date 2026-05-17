@@ -1,3 +1,5 @@
+import { SpotifyConnectButton } from "@/components/spotify-connect-button"
+
 export default function Home() {
   const cards = [
     {
@@ -18,365 +20,399 @@ export default function Home() {
       gradient: "from-emerald-400 to-teal-500",
       glow: "group-hover:shadow-emerald-500/30",
     },
-  ];
+  ]
 
   const steps = [
     "Connect your Spotify",
     "Analyze your music DNA",
     "Share your alter ego",
-  ];
+  ]
+
+  const previewStats = [
+    { label: "Energy",       value: "68%", width: "68%", gradient: "from-fuchsia-500 to-violet-500" },
+    { label: "Emotion",      value: "91%", width: "91%", gradient: "from-violet-500 to-cyan-500" },
+    { label: "Danceability", value: "42%", width: "42%", gradient: "from-cyan-500 to-fuchsia-500" },
+  ]
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050816] text-white selection:bg-fuchsia-500/30">
-      {/* Background atmosphere */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,70,239,0.2),transparent_32%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.16),transparent_38%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_50%,rgba(139,92,246,0.06),transparent)]" />
 
-      <div className="pointer-events-none absolute top-0 left-0 h-80 w-80 rounded-full bg-fuchsia-500/30 blur-[120px] animate-pulse" />
-      <div className="pointer-events-none absolute top-32 right-[-4rem] h-96 w-96 rounded-full bg-cyan-500/20 blur-[120px] animate-pulse [animation-delay:1.5s]" />
-      <div className="pointer-events-none absolute bottom-10 left-1/3 h-80 w-80 rounded-full bg-violet-500/20 blur-[120px] animate-pulse [animation-delay:2s]" />
-      <div className="pointer-events-none absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500/10 blur-[100px] animate-pulse [animation-delay:3s]" />
+      {/* ── Background atmosphere ── */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,70,239,0.13),transparent_32%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.09),transparent_38%)]" />
+      <div className="pointer-events-none absolute top-0 left-0 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-[140px] animate-pulse" />
+      <div className="pointer-events-none absolute top-32 right-[-4rem] h-96 w-96 rounded-full bg-cyan-500/12 blur-[140px] animate-pulse [animation-delay:1.5s]" />
+      <div className="pointer-events-none absolute bottom-10 left-1/3 h-80 w-80 rounded-full bg-violet-500/14 blur-[130px] animate-pulse [animation-delay:2s]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
-      {/* Grid overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_20%,black,transparent)]" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050816]/80" />
-
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col px-6 py-10">
-        {/* Navbar */}
-        <header className="mb-24 flex items-center justify-between">
-          <h1 className="bg-gradient-to-r from-white via-fuchsia-100 to-cyan-100 bg-clip-text text-2xl font-black tracking-wide text-transparent">
+        {/* ── Navigation ── */}
+        <nav className="mb-14 flex items-center justify-between sm:mb-20">
+          <div className="text-lg font-bold tracking-[0.06em] text-white sm:text-xl">
             VibePrint
-          </h1>
-
-          <button className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm text-zinc-200 backdrop-blur-sm transition-all duration-300 hover:border-fuchsia-400/30 hover:bg-white/10 hover:text-white hover:shadow-[0_0_28px_rgba(217,70,239,0.15)]">
+          </div>
+          <SpotifyConnectButton
+            variant="nav"
+            className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-medium text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_40px_rgba(139,92,246,0.12)] sm:px-6 sm:py-3 sm:text-sm"
+          >
             Connect Spotify
-          </button>
-        </header>
+          </SpotifyConnectButton>
+        </nav>
 
-        {/* Hero */}
-        <section className="relative mb-28 text-center">
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-fuchsia-500/20 via-violet-500/10 to-cyan-500/20 blur-[90px]" />
-          <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-full max-w-3xl -translate-x-1/2 bg-gradient-to-b from-fuchsia-500/10 to-transparent blur-2xl" />
+        {/* ── Hero ── */}
+        <section className="mb-20 text-center sm:mb-36">
+          <div className="mx-auto max-w-5xl">
 
-          <div className="relative">
-            <p className="mb-8 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/25 bg-fuchsia-500/10 px-5 py-2 text-[11px] uppercase tracking-[0.28em] text-fuchsia-200 backdrop-blur-sm">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-fuchsia-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-fuchsia-400" />
-              </span>
-              Your playlist has been talking about you
-            </p>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-fuchsia-500/[0.08] px-4 py-1.5 text-[9px] uppercase tracking-[0.28em] text-fuchsia-200/70 backdrop-blur-sm sm:mb-8 sm:gap-3 sm:px-5 sm:py-2 sm:text-[11px] sm:tracking-[0.32em]">
+              <div className="h-1.5 w-1.5 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(217,70,239,0.8)] sm:h-2 sm:w-2" />
+              YOUR PLAYLIST HAS BEEN TALKING ABOUT YOU
+            </div>
 
-            <h2 className="mx-auto mb-6 max-w-5xl font-serif text-5xl font-black leading-[1.02] tracking-tight md:text-7xl md:leading-[0.98]">
-              <span className="block text-white/95">The version of you</span>
-              <span className="mt-2 block bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="mx-auto mb-6 max-w-5xl text-[2.75rem] font-black leading-[0.92] tracking-tight text-white sm:mb-8 sm:text-6xl md:text-8xl">
+              The version of you
+              <br />
+              <span className="bg-gradient-to-r from-fuchsia-300 via-violet-200 to-cyan-300 bg-clip-text text-transparent">
                 only your music knows.
               </span>
-            </h2>
+            </h1>
 
-            <p className="mx-auto mb-4 max-w-xl text-base font-medium tracking-wide text-fuchsia-200/80 md:text-lg">
+            <p className="mb-4 text-base font-medium text-white/60 sm:mb-6 sm:text-2xl">
               Discover the personality hiding in your listening history.
             </p>
 
-            <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl md:leading-relaxed">
-              VibePrint reads your Spotify like a diary — then turns it into a
-              cinematic identity card you&apos;ll actually want to post. Archetypes,
-              mood aura, genre DNA, and an alter ego built for your feed.
+            <p className="mx-auto mb-8 max-w-2xl text-sm leading-[1.8] text-zinc-400/80 sm:mb-12 sm:text-base">
+              VibePrint reads your Spotify like a diary — then turns it into a cinematic identity card
+              you&apos;ll actually want to post. Archetypes, mood aura, genre DNA, and an alter ego built for your feed.
             </p>
 
-            <div className="flex flex-col items-center gap-5">
-              <button
-                type="button"
-                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-11 py-4 text-lg font-semibold shadow-[0_0_40px_rgba(217,70,239,0.45)] ring-1 ring-white/10 transition-all duration-500 hover:scale-[1.05] hover:shadow-[0_0_80px_rgba(217,70,239,0.7)] hover:ring-white/25 active:scale-[0.98]"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/35 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <SpotifyConnectButton
+              variant="hero"
+              className="group relative overflow-hidden rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_60px_rgba(217,70,239,0.35)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_90px_rgba(217,70,239,0.5)] sm:px-10 sm:py-5 sm:text-lg"
+            >
+              <span className="relative z-10 flex items-center gap-2 sm:gap-3">
+                Analyze My Music DNA
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+              <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent)] transition-transform duration-1000 group-hover:translate-x-[120%]" />
+            </SpotifyConnectButton>
 
-                <span className="relative flex items-center justify-center gap-2.5">
-                  Analyze My Music DNA
-                  <span className="inline-block transition-transform duration-500 group-hover:translate-x-1.5">
-                    →
-                  </span>
-                </span>
-              </button>
-
-              <p className="max-w-sm text-sm leading-relaxed text-zinc-500">
-                Free · Under a minute · Built to be screenshotted
-              </p>
-            </div>
           </div>
         </section>
 
-        {/* Music Aura Visualization */}
-        <div
-          aria-hidden
-          className="relative z-0 mx-auto -mt-4 mb-12 flex h-52 w-full max-w-4xl items-center justify-center md:-mt-8 md:mb-16 md:h-64"
-        >
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <div className="absolute h-56 w-56 rounded-full border border-fuchsia-500/15 bg-gradient-to-tr from-fuchsia-500/10 via-transparent to-cyan-500/10 shadow-[0_0_80px_rgba(217,70,239,0.15)] animate-[spin_30s_linear_infinite] md:h-64 md:w-64" />
-            <div className="absolute h-48 w-48 rounded-full border border-dashed border-violet-400/20 animate-[spin_24s_linear_infinite_reverse] md:h-56 md:w-56" />
-            <div className="absolute h-40 w-40 rounded-full border border-cyan-400/15 opacity-60 animate-[spin_18s_linear_infinite] md:h-48 md:w-48" />
-
-            <div className="absolute h-36 w-36 rounded-full bg-gradient-to-br from-fuchsia-500/35 via-violet-600/25 to-cyan-500/35 blur-2xl animate-pulse md:h-40 md:w-40" />
-
-            <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-[#1a0f2e] via-[#140a22] to-[#0a1528] shadow-[0_0_50px_rgba(139,92,246,0.4),inset_0_1px_0_rgba(255,255,255,0.12)] md:h-36 md:w-36">
-              <div className="absolute inset-2 rounded-full border border-white/8" />
-              <div className="absolute inset-4 rounded-full border border-white/6" />
-              <div className="absolute inset-6 rounded-full border border-white/5" />
-              <div className="absolute inset-8 rounded-full border border-white/4" />
-              <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-fuchsia-300 to-cyan-300 shadow-[0_0_16px_rgba(217,70,239,0.9)] animate-pulse" />
-            </div>
-
-            <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-end justify-center gap-1 md:bottom-8 md:gap-1.5">
-              <div className="w-1 rounded-full bg-gradient-to-t from-fuchsia-500/20 to-fuchsia-400/80 animate-pulse [animation-delay:0ms] h-7 md:h-8 md:w-1.5" />
-              <div className="w-1 rounded-full bg-gradient-to-t from-violet-500/20 to-violet-400/80 animate-pulse [animation-delay:150ms] h-11 md:h-12 md:w-1.5" />
-              <div className="w-1 rounded-full bg-gradient-to-t from-fuchsia-500/20 to-fuchsia-300/90 animate-pulse [animation-delay:300ms] h-14 md:h-[3.75rem] md:w-1.5" />
-              <div className="w-1 rounded-full bg-gradient-to-t from-cyan-500/20 to-cyan-400/80 animate-pulse [animation-delay:450ms] h-9 md:h-10 md:w-1.5" />
-              <div className="w-1 rounded-full bg-gradient-to-t from-violet-500/20 to-violet-300/90 animate-pulse [animation-delay:600ms] h-12 md:h-[3.25rem] md:w-1.5" />
-              <div className="w-1 rounded-full bg-gradient-to-t from-fuchsia-500/20 to-cyan-400/80 animate-pulse [animation-delay:750ms] h-8 md:h-9 md:w-1.5" />
-              <div className="w-1 rounded-full bg-gradient-to-t from-cyan-500/20 to-cyan-300/90 animate-pulse [animation-delay:900ms] h-11 md:h-12 md:w-1.5" />
-            </div>
-
-            <div className="absolute left-[12%] top-1/2 h-1.5 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-transparent via-fuchsia-400/50 to-transparent opacity-60 animate-pulse [animation-delay:200ms] md:w-10" />
-            <div className="absolute right-[12%] top-1/2 h-1.5 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-60 animate-pulse [animation-delay:500ms] md:w-10" />
+        {/* ── Preview card ── */}
+        <section className="mb-20 sm:mb-32">
+          <div className="mb-8 text-center sm:mb-10">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-white/30">
+              PREVIEW — THIS IS WHAT HITS THE GROUP CHAT
+            </p>
           </div>
-        </div>
 
-        {/* Music Personality Preview Card */}
-        <section className="relative mx-auto mb-32 w-full max-w-lg">
-          <p className="mb-5 text-center text-xs uppercase tracking-[0.25em] text-white/40">
-            Preview — this is what hits the group chat
-          </p>
+          <div className="relative mx-auto flex max-w-5xl items-center justify-center">
 
-          <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 opacity-80 blur-md transition-opacity duration-500" />
-
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-violet-500/50 via-fuchsia-500/30 to-cyan-500/40 opacity-60 blur-3xl" />
-
-          <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/[0.08] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_36px_110px_rgba(139,92,246,0.4)]">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-violet-500/30 blur-3xl transition-opacity duration-500" />
-            <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-cyan-500/20 blur-3xl" />
-            <div className="pointer-events-none absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-            <div className="relative mb-6 flex items-start justify-between">
-              <div>
-                <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">
-                  Your sonic identity
-                </p>
-
-                <h3 className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-3xl font-black text-transparent">
-                  Midnight Dreamer
-                </h3>
-              </div>
-
-              <div className="rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-200 backdrop-blur-sm">
-                Share ready
+            {/* Aura orb — desktop only */}
+            <div className="absolute left-[8%] top-1/2 hidden -translate-y-1/2 lg:block">
+              <div className="relative h-72 w-72">
+                <div className="absolute inset-0 rounded-full border border-fuchsia-500/10" />
+                <div className="absolute inset-8 rounded-full border border-violet-500/10" />
+                <div className="absolute inset-16 rounded-full border border-cyan-500/10" />
+                <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#170c28] to-[#090611] shadow-[0_0_35px_rgba(217,70,239,0.3),0_0_70px_rgba(168,85,247,0.1)]">
+                  <div className="absolute inset-5 rounded-full border border-white/5" />
+                  <div className="absolute inset-9 rounded-full border border-white/5" />
+                  <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-fuchsia-200 to-violet-300" />
+                </div>
               </div>
             </div>
 
-            <div className="mb-6 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-violet-600/40 via-fuchsia-600/20 to-cyan-600/30 p-4 transition-colors duration-300 hover:border-white/20">
-              <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-white/50">
-                Aura
-              </p>
-
-              <p className="text-lg font-semibold leading-snug text-white">
-                Emotional Synthwave Soul
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-white/50">
-                Genres
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded-full border border-violet-400/30 bg-violet-500/20 px-3 py-1 text-xs text-violet-100 transition-colors duration-300 hover:bg-violet-500/30">
-                  Synthwave
-                </span>
-
-                <span className="rounded-full border border-fuchsia-400/30 bg-fuchsia-500/20 px-3 py-1 text-xs text-fuchsia-100 transition-colors duration-300 hover:bg-fuchsia-500/30">
-                  Indie Pop
-                </span>
-
-                <span className="rounded-full border border-cyan-400/30 bg-cyan-500/20 px-3 py-1 text-xs text-cyan-100 transition-colors duration-300 hover:bg-cyan-500/30">
-                  Ambient
-                </span>
-              </div>
-            </div>
-
-            <div className="mb-6 grid grid-cols-2 gap-3">
-              <div className="rounded-xl border border-white/10 bg-white/[0.06] p-4 transition-all duration-300 hover:border-fuchsia-400/20 hover:bg-white/[0.08]">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">
-                  Compatibility
-                </p>
-
-                <p className="mt-1 bg-gradient-to-r from-fuchsia-300 to-violet-300 bg-clip-text text-4xl font-black text-transparent">
-                  92%
-                </p>
+            {/* Card */}
+            <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-[#0c0a1a]/90 p-5 shadow-[0_0_120px_rgba(139,92,246,0.16)] backdrop-blur-2xl sm:rounded-[2rem] sm:p-8">
+              <div className="absolute inset-0 opacity-60">
+                <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-b from-fuchsia-400/25 via-violet-400/12 to-cyan-400/8 blur-2xl sm:w-32" />
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-white/[0.06] p-4 transition-all duration-300 hover:border-cyan-400/20 hover:bg-white/[0.08]">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">
-                  Listening Mood
-                </p>
+              <div className="relative z-10">
 
-                <p className="mt-2 text-sm font-semibold leading-snug text-cyan-200">
-                  Late-night introspection
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-4 border-t border-white/10 pt-5">
-              {[
-                {
-                  label: "Energy",
-                  value: "68%",
-                  width: "68%",
-                  gradient: "from-fuchsia-500 to-violet-500",
-                },
-                {
-                  label: "Emotion",
-                  value: "91%",
-                  width: "91%",
-                  gradient: "from-violet-500 to-cyan-500",
-                },
-                {
-                  label: "Danceability",
-                  value: "42%",
-                  width: "42%",
-                  gradient: "from-cyan-500 to-fuchsia-500",
-                },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <div className="mb-2 flex justify-between text-xs">
-                    <p className="text-white/60">{stat.label}</p>
-                    <p className="font-semibold text-white">
-                      {stat.value}
+                {/* Header */}
+                <div className="mb-5 flex items-start justify-between sm:mb-8">
+                  <div>
+                    <p className="mb-2 text-[8px] uppercase tracking-[0.28em] text-white/35 sm:mb-3 sm:text-[9px] sm:tracking-[0.3em]">
+                      YOUR SONIC IDENTITY
                     </p>
+                    <h3 className="bg-gradient-to-r from-violet-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-xl font-bold text-transparent sm:text-[1.75rem]">
+                      Midnight Dreamer
+                    </h3>
                   </div>
-
-                  <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-                    <div
-                      className={`h-full rounded-full bg-gradient-to-r ${stat.gradient} transition-all duration-700`}
-                      style={{ width: stat.width }}
-                    />
+                  <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-white/50 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-sm">
+                    Share ready
                   </div>
                 </div>
-              ))}
+
+                {/* Aura */}
+                <div className="mb-5 rounded-2xl border border-white/8 bg-gradient-to-r from-violet-600/20 via-fuchsia-500/14 to-cyan-500/10 p-4 backdrop-blur-sm sm:mb-8 sm:rounded-3xl sm:p-5">
+                  <p className="mb-1.5 text-[8px] uppercase tracking-[0.25em] text-white/35 sm:mb-2 sm:text-[9px] sm:tracking-[0.28em]">
+                    Aura
+                  </p>
+                  <p className="text-lg font-bold tracking-tight text-white sm:text-3xl">
+                    Emotional Synthwave Soul
+                  </p>
+                </div>
+
+                {/* Genres */}
+                <div className="mb-5 sm:mb-8">
+                  <p className="mb-3 text-[8px] uppercase tracking-[0.25em] text-white/35 sm:mb-4 sm:text-[9px] sm:tracking-[0.28em]">
+                    Genres
+                  </p>
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                    {["Synthwave", "Indie Pop", "Ambient"].map((genre) => (
+                      <span
+                        key={genre}
+                        className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm sm:px-4 sm:py-2"
+                      >
+                        {genre}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Stats grid */}
+                <div className="mb-5 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4">
+                  <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 sm:rounded-3xl sm:p-5">
+                    <p className="mb-1.5 text-[8px] uppercase tracking-[0.25em] text-white/35 sm:mb-2 sm:text-[9px]">
+                      Compatibility
+                    </p>
+                    <p className="text-4xl font-black tracking-tight text-fuchsia-200 sm:text-6xl">
+                      92%
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 sm:rounded-3xl sm:p-5">
+                    <p className="mb-1.5 text-[8px] uppercase tracking-[0.25em] text-white/35 sm:mb-2 sm:text-[9px]">
+                      Listening Mood
+                    </p>
+                    <p className="text-base font-semibold text-cyan-200 sm:text-2xl">
+                      Late-night introspection
+                    </p>
+                  </div>
+                </div>
+
+                {/* Trait bars */}
+                <div className="space-y-3 border-t border-white/10 pt-4 sm:space-y-4 sm:pt-5">
+                  {previewStats.map((stat) => (
+                    <div key={stat.label}>
+                      <div className="mb-1.5 flex justify-between text-xs">
+                        <p className="text-white/55">{stat.label}</p>
+                        <p className="font-semibold text-white">{stat.value}</p>
+                      </div>
+                      <div className="h-1 overflow-hidden rounded-full bg-white/10">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${stat.gradient}`}
+                          style={{ width: stat.width }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Personality Cards */}
-        <section className="mb-28">
-          <div className="mb-12 text-center">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-fuchsia-300/80">
-              Archetype gallery
+        {/* ── Identity reveal ── */}
+        <section className="relative mb-20 overflow-hidden px-4 py-16 sm:mb-32 sm:px-6 sm:py-28">
+
+          {/* Atmosphere */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-[12%] top-[12%] h-[20rem] w-[20rem] rounded-full bg-fuchsia-500/10 blur-[140px] animate-pulse sm:h-[26rem] sm:w-[26rem]" />
+            <div className="absolute right-[10%] bottom-[10%] h-[18rem] w-[18rem] rounded-full bg-cyan-500/10 blur-[150px] animate-pulse [animation-delay:1.7s] sm:h-[24rem] sm:w-[24rem]" />
+            <div className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/10 blur-[170px] animate-pulse [animation-delay:0.8s] sm:h-[32rem] sm:w-[32rem]" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-6xl text-center">
+
+            <p className="mb-6 text-[10px] uppercase tracking-[0.38em] text-white/25 sm:mb-8 sm:text-[11px] sm:tracking-[0.42em]">
+              YOUR IDENTITY READ
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-              Which one is{" "}
-              <span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-                actually you?
-              </span>
+
+            {/* Giant archetype title */}
+            <div className="relative mx-auto mb-7 max-w-5xl sm:mb-10">
+              <div className="pointer-events-none absolute inset-0 -z-10">
+                <div className="absolute left-1/2 top-1/2 h-[14rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/12 blur-[120px] sm:h-[18rem] sm:w-[44rem]" />
+                <div className="absolute left-[35%] top-[45%] h-[10rem] w-[14rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500/10 blur-[100px] sm:h-[14rem] sm:w-[18rem]" />
+              </div>
+              <h2
+                className="select-none text-[3.25rem] font-bold leading-[0.88] tracking-[-0.04em] sm:text-[4.5rem] md:text-[7rem] lg:text-[8rem]"
+                style={{
+                  background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(240,220,255,0.96) 42%, rgba(217,190,255,0.92) 72%, rgba(188,235,255,0.88) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  WebkitMaskImage: "radial-gradient(ellipse 78% 100% at 50% 50%, black 62%, transparent 100%)",
+                  textShadow: "0 0 60px rgba(168,85,247,0.18), 0 0 140px rgba(217,70,239,0.10)",
+                }}
+              >
+                Midnight
+                <br />
+                Dreamer
+              </h2>
+            </div>
+
+            {/* Archetype label */}
+            <div className="mb-5 flex flex-wrap items-center justify-center gap-2 text-[10px] uppercase tracking-[0.3em] text-white/28 sm:mb-6 sm:gap-3 sm:text-[11px] sm:tracking-[0.35em]">
+              <span>YOUR ARCHETYPE</span>
+              <span className="h-px w-4 bg-white/10 sm:w-6" />
+              <span>98% MATCH</span>
+            </div>
+
+            {/* Quote */}
+            <div className="relative mx-auto mb-10 max-w-sm px-4 sm:mb-16 sm:max-w-2xl sm:px-0">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 h-16 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/6 blur-[80px] sm:h-20 sm:w-64" />
+              <p className="relative text-base font-light leading-relaxed text-white/58 sm:text-lg md:text-[1.35rem]">
+                &ldquo;Your playlist sounds like memories that never left.&rdquo;
+              </p>
+            </div>
+
+            {/* Signal stats */}
+            <div className="mx-auto flex max-w-xs items-center justify-center gap-4 sm:max-w-2xl sm:gap-8 md:gap-12">
+              <div className="text-center">
+                <div className="mb-1 text-xl font-semibold tracking-[-0.03em] text-fuchsia-100/92 sm:text-3xl">94%</div>
+                <div className="text-[9px] uppercase tracking-[0.22em] text-white/24 sm:text-[10px] sm:tracking-[0.28em]">Night Energy</div>
+              </div>
+              <div className="h-6 w-px bg-white/8 sm:h-8" />
+              <div className="text-center">
+                <div className="mb-1 text-xl font-semibold tracking-[-0.03em] text-violet-100/92 sm:text-3xl">Top 2%</div>
+                <div className="text-[9px] uppercase tracking-[0.22em] text-white/24 sm:text-[10px] sm:tracking-[0.28em]">Emotional Depth</div>
+              </div>
+              <div className="h-6 w-px bg-white/8 sm:h-8" />
+              <div className="text-center">
+                <div className="mb-1 text-xl font-semibold tracking-[-0.03em] text-cyan-100/92 sm:text-3xl">11 pm</div>
+                <div className="text-[9px] uppercase tracking-[0.22em] text-white/24 sm:text-[10px] sm:tracking-[0.28em]">Peak Listening</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── Archetype cards ── */}
+        <section className="mb-20 sm:mb-32">
+          <div className="mb-10 text-center sm:mb-14">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.35em] text-white/30 sm:mb-4">
+              CHOOSE YOUR ALTER EGO
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Every playlist becomes a personality.
             </h2>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
             {cards.map((card) => (
               <div
                 key={card.title}
-                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:border-white/25 hover:shadow-2xl ${card.glow}`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-2xl sm:rounded-[2rem] sm:p-8 ${card.glow}`}
               >
                 <div
-                  className={`absolute -right-6 -top-6 h-28 w-28 rounded-full bg-gradient-to-br ${card.gradient} opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-50 group-hover:blur-3xl`}
+                  className={`absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${card.gradient}`}
+                  style={{ filter: "blur(120px)" }}
                 />
-
-                <div
-                  className={`relative mb-6 h-36 overflow-hidden rounded-2xl bg-gradient-to-br ${card.gradient} shadow-inner transition-transform duration-500 group-hover:scale-[1.03]`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-white/5" />
+                <div className="relative z-10">
+                  <div className={`mb-4 inline-flex rounded-full bg-gradient-to-r px-3 py-1.5 text-xs font-semibold text-white sm:mb-6 sm:px-4 sm:py-2 ${card.gradient}`}>
+                    AI ARCHETYPE
+                  </div>
+                  <h3 className="mb-3 text-2xl font-bold tracking-tight text-white sm:mb-5 sm:text-3xl">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/65 sm:text-base">
+                    {card.text}
+                  </p>
+                  <div className="mt-6 flex items-center gap-2 text-sm font-medium text-white/45 sm:mt-8">
+                    Discover identity
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </div>
                 </div>
-
-                <h3 className="relative mb-3 text-2xl font-bold transition-colors duration-300 group-hover:text-white">
-                  {card.title}
-                </h3>
-
-                <p className="relative text-sm leading-relaxed text-zinc-400 transition-colors duration-300 group-hover:text-zinc-300">
-                  {card.text}
-                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="mb-28 grid gap-6 rounded-3xl border border-white/10 bg-white/[0.05] p-10 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors duration-300 hover:border-white/15 md:grid-cols-3">
-          <div className="transition-all duration-300 hover:scale-105">
-            <h3 className="bg-gradient-to-b from-fuchsia-300 to-fuchsia-500 bg-clip-text text-5xl font-black text-transparent">
-              12+
-            </h3>
-
-            <p className="mt-2 text-zinc-400">
-              Archetypes that feel uncomfortably accurate
+        {/* ── How it works ── */}
+        <section className="mb-20 sm:mb-32">
+          <div className="mb-10 text-center sm:mb-16">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.35em] text-white/30 sm:mb-4">
+              HOW IT WORKS
             </p>
-          </div>
-
-          <div className="transition-all duration-300 hover:scale-105">
-            <h3 className="bg-gradient-to-b from-cyan-300 to-cyan-500 bg-clip-text text-5xl font-black text-transparent">
-              100%
-            </h3>
-
-            <p className="mt-2 text-zinc-400">
-              Built for stories, feeds, and bragging rights
-            </p>
-          </div>
-
-          <div className="transition-all duration-300 hover:scale-105">
-            <h3 className="bg-gradient-to-b from-violet-300 to-violet-500 bg-clip-text text-5xl font-black text-transparent">
-              ∞
-            </h3>
-
-            <p className="mt-2 text-zinc-400">Vibes you didn&apos;t know you had</p>
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section className="mb-28">
-          <div className="mb-14 text-center">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-cyan-300/80">
-              Three steps to your alter ego
-            </p>
-            <h2 className="text-4xl font-bold tracking-tight">
-              How It Works
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Three steps to your music identity.
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {steps.map((step, index) => (
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
+            {steps.map((step, i) => (
               <div
                 key={step}
-                className="group rounded-2xl border border-white/10 bg-white/[0.05] p-8 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-white/25 hover:bg-white/[0.08] hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.05] hover:shadow-[0_0_60px_rgba(139,92,246,0.12)] sm:rounded-[2rem] sm:p-8"
               >
-                <div className="mb-4 bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-5xl font-black text-transparent transition-transform duration-500 group-hover:scale-110">
-                  0{index + 1}
+                <div
+                  className={`absolute inset-0 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100 ${
+                    i === 0 ? "bg-fuchsia-500/10" : i === 1 ? "bg-violet-500/10" : "bg-cyan-500/10"
+                  }`}
+                />
+                <div
+                  className={`relative mb-4 text-5xl font-black transition-all duration-500 group-hover:scale-110 sm:mb-6 sm:text-6xl ${
+                    i === 0
+                      ? "text-fuchsia-400/25 group-hover:text-fuchsia-300/50"
+                      : i === 1
+                      ? "text-violet-400/25 group-hover:text-violet-300/50"
+                      : "text-cyan-400/25 group-hover:text-cyan-300/50"
+                  }`}
+                >
+                  0{i + 1}
                 </div>
-
-                <p className="text-lg font-medium text-zinc-100 transition-colors duration-300 group-hover:text-white">
+                <h3 className="relative mb-3 text-xl font-semibold text-white sm:mb-4 sm:text-2xl">
                   {step}
+                </h3>
+                <p className="relative text-sm leading-relaxed text-white/55 sm:text-base">
+                  Experience AI-powered music psychology designed to transform
+                  listening history into cinematic identity storytelling.
                 </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-white/10 pt-10 text-center">
-          <p className="text-sm text-zinc-500">
-            Built for music lovers, identity explorers, and everyone who
-            screenshots their Wrapped.
-          </p>
-        </footer>
+        {/* ── Final CTA ── */}
+        <section className="pb-16 pt-6 text-center sm:pb-24 sm:pt-8">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-14 backdrop-blur-2xl sm:rounded-[2.5rem] sm:px-8 sm:py-20">
+            <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full bg-violet-500/20 blur-[140px] sm:h-72 sm:w-72" />
+
+            <div className="relative z-10">
+              <p className="mb-4 text-[10px] uppercase tracking-[0.35em] text-white/30 sm:mb-5">
+                READY TO SEE WHO YOU SOUND LIKE?
+              </p>
+
+              <h2 className="mx-auto mb-5 max-w-4xl text-[2.5rem] font-black leading-[0.95] tracking-tight text-white sm:mb-6 sm:text-5xl md:text-7xl">
+                Your playlist already
+                <br />
+                knows the answer.
+              </h2>
+
+              <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/60 sm:mb-10 sm:text-lg">
+                Connect Spotify. Generate your cinematic music identity. Share
+                the version of yourself your headphones already understand.
+              </p>
+
+              <SpotifyConnectButton
+                variant="hero"
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_60px_rgba(217,70,239,0.35)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_90px_rgba(217,70,239,0.5)] sm:px-10 sm:py-5 sm:text-lg"
+              >
+                <span className="relative z-10 flex items-center gap-2 sm:gap-3">
+                  Generate My VibePrint
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
+                <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent)] transition-transform duration-1000 group-hover:translate-x-[120%]" />
+              </SpotifyConnectButton>
+            </div>
+          </div>
+        </section>
+
       </div>
     </main>
-  );
+  )
 }
