@@ -21,6 +21,9 @@ export function SpotifyConnectButton({ variant = "nav", className, children }: P
           "user-read-recently-played",
           "user-read-playback-state",
         ].join(" "),
+        queryParams: {
+          show_dialog: "true",
+        },
       },
     })
     if (error) {
