@@ -10,20 +10,12 @@ interface Props {
 
 export function SpotifyConnectButton({ variant = "nav", className, children }: Props) {
   const handleConnect = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "spotify",
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'spotify',
       options: {
+        scopes: 'user-read-email user-read-private user-top-read user-read-recently-played',
         redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/spotify/callback`,
-        scopes: [
-          "user-read-private",
-          "user-read-email",
-          "user-top-read",
-          "user-read-recently-played",
-          "user-read-playback-state",
-        ].join(" "),
-        queryParams: {
-          show_dialog: "true",
-        },
+        queryParams: { show_dialog: 'true' },
       },
     })
     if (error) {

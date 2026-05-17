@@ -1,27 +1,32 @@
-import { createClient } from "@/lib/supabase/server"
-import { NextResponse } from "next/server"
+import { createServerClient } from '@supabase/ssr'
+import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 
-/**
- * Supabase OAuth callback handler.
- * Supabase redirects here after Spotify authentication.
- * The code is exchanged for a session which includes provider_token (Spotify access token).
- */
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url)
-  const code = searchParams.get("code")
-  const next = searchParams.get("next") ?? "/result"
+  const { searchParams } = new URL(request.url)
+  const code = searchParams.get('code')
+  const cookieStore = await cookies()
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    {
+      cookies: {
+        getAll() { return cookieStore.getAll() },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options)
+          )
+        },
+      },
+    }
+  )
 
   if (code) {
-    const supabase = await createClient()
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
-
-    if (!error) {
-      return NextResponse.redirect(`${origin}${next}`)
-    }
-
-    console.error("[Spotify callback] Exchange error:", error)
+    await supabase.auth.exchangeCodeForSession(code)
   }
 
-  // On error, redirect to home with error param
-  return NextResponse.redirect(`${origin}/?error=spotify_auth_failed`)
+  return NextResponse.redirect(
+    new URL('/result', process.env.NEXT_PUBLIC_SITE_URL)
+  )
 }
