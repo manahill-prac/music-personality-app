@@ -45,6 +45,22 @@ export default function Home() {
       <div className="pointer-events-none absolute bottom-10 left-1/3 h-80 w-80 rounded-full bg-violet-500/14 blur-[130px] animate-pulse [animation-delay:2s]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
+      {/* ── Musical DNA — soft vinyl ring field, desktop only ── */}
+      <div className="pointer-events-none absolute right-[2%] top-[4%] hidden lg:block" aria-hidden>
+        <div className="relative h-[420px] w-[420px]">
+          <div className="absolute inset-0       rounded-full border border-fuchsia-300/[0.055] animate-breathe-slow" />
+          <div className="absolute inset-[30px]  rounded-full border border-violet-300/[0.050]  animate-breathe"      style={{ animationDelay: '0.7s',  animationDuration: '9s'  }} />
+          <div className="absolute inset-[60px]  rounded-full border border-fuchsia-200/[0.045] animate-breathe-slow" style={{ animationDelay: '1.4s'                           }} />
+          <div className="absolute inset-[90px]  rounded-full border border-violet-200/[0.040]  animate-breathe"      style={{ animationDelay: '0.3s',  animationDuration: '8s'  }} />
+          <div className="absolute inset-[120px] rounded-full border border-cyan-300/[0.035]   animate-breathe-slow" style={{ animationDelay: '2.1s'                           }} />
+          <div className="absolute inset-[150px] rounded-full border border-fuchsia-200/[0.030] animate-breathe"      style={{ animationDelay: '1.0s',  animationDuration: '10s' }} />
+          <div className="absolute inset-[180px] rounded-full border border-violet-200/[0.025] animate-breathe-slow" style={{ animationDelay: '0.5s'                           }} />
+          {/* Spectral centre — soft glow core */}
+          <div className="absolute inset-[200px] rounded-full bg-gradient-to-br from-fuchsia-500/[0.07] to-violet-500/[0.04] blur-2xl animate-breathe" style={{ animationDelay: '0.9s' }} />
+          <div className="absolute inset-[206px] rounded-full border border-white/[0.03]" />
+        </div>
+      </div>
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
 
         {/* ── Navigation ── */}
@@ -411,6 +427,27 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* ── Footer ── */}
+        <footer className="relative pb-10 pt-12">
+          {/* Atmospheric top fade */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" aria-hidden />
+          <div className="pointer-events-none absolute -top-6 left-1/2 h-12 w-48 -translate-x-1/2 rounded-full bg-violet-500/[0.05] blur-2xl" aria-hidden />
+
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-6 text-center">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.32em] text-white/20">
+              VibePrint
+            </p>
+            <p className="text-[9px] leading-relaxed tracking-[0.06em] text-white/13">
+              Your music knows you better than you do.
+            </p>
+            <div className="mt-1 flex items-center gap-4 text-[8px] uppercase tracking-[0.24em] text-white/[0.12]">
+              <a href="/privacy" className="transition-colors duration-300 hover:text-white/30">Privacy</a>
+              <span className="h-px w-2.5 bg-white/[0.07]" aria-hidden />
+              <a href="/terms" className="transition-colors duration-300 hover:text-white/30">Terms</a>
+            </div>
+          </div>
+        </footer>
 
       </div>
     </main>
