@@ -29,8 +29,8 @@ export default function Home() {
   ]
 
   const previewStats = [
-    { label: "Energy",       value: "68%", width: "68%", gradient: "from-fuchsia-500 to-violet-500" },
-    { label: "Emotion",      value: "91%", width: "91%", gradient: "from-violet-500 to-cyan-500" },
+    { label: "Energy", value: "68%", width: "68%", gradient: "from-fuchsia-500 to-violet-500" },
+    { label: "Emotion", value: "91%", width: "91%", gradient: "from-violet-500 to-cyan-500" },
     { label: "Danceability", value: "42%", width: "42%", gradient: "from-cyan-500 to-fuchsia-500" },
   ]
 
@@ -38,27 +38,51 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-[#050816] text-white selection:bg-fuchsia-500/30">
 
       {/* ── Background atmosphere ── */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,70,239,0.13),transparent_32%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.09),transparent_38%)]" />
-      <div className="pointer-events-none absolute top-0 left-0 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-[140px] animate-pulse" />
-      <div className="pointer-events-none absolute top-32 right-[-4rem] h-96 w-96 rounded-full bg-cyan-500/12 blur-[140px] animate-pulse [animation-delay:1.5s]" />
-      <div className="pointer-events-none absolute bottom-10 left-1/3 h-80 w-80 rounded-full bg-violet-500/14 blur-[130px] animate-pulse [animation-delay:2s]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      {/* Radial fields — more opaque for perceptible depth */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,70,239,0.20),transparent_38%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.14),transparent_42%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(139,92,246,0.11),transparent_40%)]" />
 
-      {/* ── Musical DNA — soft vinyl ring field, desktop only ── */}
+      {/* Floating orbs — perceptibly glowing */}
+      <div className="pointer-events-none absolute -top-20 -left-20 h-[28rem] w-[28rem] rounded-full bg-fuchsia-500/25 blur-[150px] animate-glow-pulse" />
+      <div className="pointer-events-none absolute top-[15%] right-[-6rem] h-[30rem] w-[30rem] rounded-full bg-cyan-500/16 blur-[150px] animate-glow-pulse [animation-delay:2.2s]"/>
+      <div className="pointer-events-none absolute bottom-[5%] left-1/3 h-[26rem] w-[26rem] rounded-full bg-violet-500/18 blur-[140px] animate-glow-pulse [animation-delay:1.1s]" />
+
+      {/* Bottom chromatic vignette — grounds the cinematic frame */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[40vh] bg-gradient-to-t from-[#030612] via-transparent to-transparent" />
+
+      {/* Subtle grid overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:72px_72px]" />
+
+      {/* ── Musical DNA — vinyl ring field, desktop only — MULTI-DIRECTIONAL ── */}
       <div className="pointer-events-none absolute right-[2%] top-[4%] hidden lg:block" aria-hidden>
-        <div className="relative h-[420px] w-[420px]">
-          <div className="absolute inset-0       rounded-full border border-fuchsia-300/[0.055] animate-breathe-slow" />
-          <div className="absolute inset-[30px]  rounded-full border border-violet-300/[0.050]  animate-breathe"      style={{ animationDelay: '0.7s',  animationDuration: '9s'  }} />
-          <div className="absolute inset-[60px]  rounded-full border border-fuchsia-200/[0.045] animate-breathe-slow" style={{ animationDelay: '1.4s'                           }} />
-          <div className="absolute inset-[90px]  rounded-full border border-violet-200/[0.040]  animate-breathe"      style={{ animationDelay: '0.3s',  animationDuration: '8s'  }} />
-          <div className="absolute inset-[120px] rounded-full border border-cyan-300/[0.035]   animate-breathe-slow" style={{ animationDelay: '2.1s'                           }} />
-          <div className="absolute inset-[150px] rounded-full border border-fuchsia-200/[0.030] animate-breathe"      style={{ animationDelay: '1.0s',  animationDuration: '10s' }} />
-          <div className="absolute inset-[180px] rounded-full border border-violet-200/[0.025] animate-breathe-slow" style={{ animationDelay: '0.5s'                           }} />
-          {/* Spectral centre — soft glow core */}
-          <div className="absolute inset-[200px] rounded-full bg-gradient-to-br from-fuchsia-500/[0.07] to-violet-500/[0.04] blur-2xl animate-breathe" style={{ animationDelay: '0.9s' }} />
-          <div className="absolute inset-[206px] rounded-full border border-white/[0.03]" />
+        <div className="relative h-[480px] w-[480px] animate-ring-spin">
+          {/* Outermost — slowest, faintest */}
+          <div className="absolute inset-0       rounded-full border border-fuchsia-300/[0.10]" />
+          <div className="absolute inset-[40px]  rounded-full border border-violet-300/[0.09]" />
         </div>
+        {/* Inner rings counter-rotate */}
+        <div className="pointer-events-none absolute inset-0 animate-ring-spin-reverse">
+          <div className="absolute inset-[80px]  rounded-full border border-fuchsia-200/[0.08]" />
+          <div className="absolute inset-[120px] rounded-full border border-cyan-300/[0.07]" />
+          <div className="absolute inset-[160px] rounded-full border border-violet-200/[0.06]" />
+          <div className="absolute inset-[200px] rounded-full border border-fuchsia-200/[0.05]" />
+        </div>
+        {/* Centre core glow */}
+        <div className="pointer-events-none absolute inset-[220px] rounded-full bg-gradient-to-br from-fuchsia-500/[0.18] to-violet-500/[0.12] blur-2xl animate-breathe" style={{ animationDelay: '0.9s' }} />
+        {/* Pinhole centre */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-fuchsia-200/80 to-violet-200/60 shadow-[0_0_20px_rgba(217,70,239,0.6)]" />
+      </div>
+
+      {/* ── Left-side ambient frequency line — subtle vertical pulse ── */}
+      <div className="pointer-events-none absolute left-[3%] top-1/3 hidden xl:flex flex-col items-center gap-[5px]" aria-hidden>
+        {[1.8, 1.0, 2.6, 0.6, 1.4, 2.0, 0.8, 1.6, 1.2, 2.4, 0.9, 1.5].map((delay, i) => (
+          <div
+            key={i}
+            className="w-[1.5px] rounded-full bg-gradient-to-b from-fuchsia-400/30 to-violet-400/20 animate-waveform-pulse"
+            style={{ height: `${8 + (i % 3) * 6}px`, animationDelay: `${delay}s`, animationDuration: `${1.4 + (i % 4) * 0.3}s` }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
@@ -80,38 +104,56 @@ export default function Home() {
         <section className="mb-20 text-center sm:mb-36">
           <div className="mx-auto max-w-5xl">
 
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-fuchsia-500/[0.08] px-4 py-1.5 text-[9px] uppercase tracking-[0.28em] text-fuchsia-200/70 backdrop-blur-sm sm:mb-8 sm:gap-3 sm:px-5 sm:py-2 sm:text-[11px] sm:tracking-[0.32em]">
-              <div className="h-1.5 w-1.5 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(217,70,239,0.8)] sm:h-2 sm:w-2" />
-              YOUR PLAYLIST HAS BEEN TALKING ABOUT YOU
+            {/* Eyebrow pill */}
+            <div className="mb-6 animate-fade-in sm:mb-8" style={{ animationDelay: '0.1s' }}>
+              <div className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/25 bg-fuchsia-500/[0.10] px-4 py-1.5 text-[9px] uppercase tracking-[0.28em] text-fuchsia-200/80 backdrop-blur-sm sm:gap-3 sm:px-5 sm:py-2 sm:text-[11px] sm:tracking-[0.32em]">
+                <div className="h-1.5 w-1.5 rounded-full bg-fuchsia-400 shadow-[0_0_14px_rgba(217,70,239,1.0)] animate-pulse sm:h-2 sm:w-2" />
+                YOUR PLAYLIST HAS BEEN TALKING ABOUT YOU
+              </div>
             </div>
 
-            <h1 className="mx-auto mb-6 max-w-5xl text-[2.75rem] font-black leading-[0.92] tracking-tight text-white sm:mb-8 sm:text-6xl md:text-8xl">
-              The version of you
-              <br />
-              <span className="bg-gradient-to-r from-fuchsia-300 via-violet-200 to-cyan-300 bg-clip-text text-transparent">
-                only your music knows.
-              </span>
-            </h1>
+            {/* Headline */}
+            <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+              <h1 className="mx-auto mb-6 max-w-5xl text-[2.75rem] font-black leading-[0.92] tracking-tight text-white sm:mb-8 sm:text-6xl md:text-8xl">
+                The version of you
+                <br />
+                <span className="bg-gradient-to-r from-fuchsia-300 via-violet-200 to-cyan-300 bg-clip-text text-transparent">
+                  only your music knows.
+                </span>
+              </h1>
+            </div>
 
-            <p className="mb-4 text-base font-medium text-white/60 sm:mb-6 sm:text-2xl">
-              Discover the personality hiding in your listening history.
-            </p>
+            {/* Sub-heading */}
+            <div className="animate-fade-up" style={{ animationDelay: '0.38s' }}>
+              <p className="mb-4 text-base font-medium text-white/65 sm:mb-6 sm:text-2xl">
+                Discover the personality hiding in your listening history.
+              </p>
+            </div>
 
-            <p className="mx-auto mb-8 max-w-2xl text-sm leading-[1.8] text-zinc-400/80 sm:mb-12 sm:text-base">
-              VibePrint reads your Spotify like a diary — then turns it into a cinematic identity card
-              you&apos;ll actually want to post. Archetypes, mood aura, genre DNA, and an alter ego built for your feed.
-            </p>
+            {/* Body copy */}
+            <div className="animate-fade-up" style={{ animationDelay: '0.52s' }}>
+              <p className="mx-auto mb-10 max-w-2xl text-sm leading-[1.9] text-zinc-400/90 sm:mb-14 sm:text-base">
+                VibePrint reads your Spotify like a diary — then turns it into a cinematic identity card
+                you&apos;ll actually want to post. Archetypes, mood aura, genre DNA, and an alter ego built for your feed.
+              </p>
+            </div>
 
-            <SpotifyConnectButton
-              variant="hero"
-              className="group relative overflow-hidden rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_60px_rgba(217,70,239,0.35)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_90px_rgba(217,70,239,0.5)] sm:px-10 sm:py-5 sm:text-lg"
-            >
-              <span className="relative z-10 flex items-center gap-2 sm:gap-3">
-                Analyze My Music DNA
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </span>
-              <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent)] transition-transform duration-1000 group-hover:translate-x-[120%]" />
-            </SpotifyConnectButton>
+            {/* CTA — with visible depth ring + glow halo */}
+            <div className="animate-fade-up relative inline-block" style={{ animationDelay: '0.68s' }}>
+              {/* Outer depth ring — premium halo effect */}
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-fuchsia-500/20 via-violet-500/15 to-cyan-500/20 blur-xl animate-glow-pulse" />
+              <div className="absolute -inset-[1px] rounded-full bg-gradient-to-r from-fuchsia-400/30 via-violet-400/20 to-cyan-400/30" />
+              <SpotifyConnectButton
+                variant="hero"
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_80px_rgba(217,70,239,0.45),0_0_160px_rgba(139,92,246,0.20)] transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_110px_rgba(217,70,239,0.60),0_0_200px_rgba(139,92,246,0.30)] sm:px-10 sm:py-5 sm:text-lg"
+              >
+                <span className="relative z-10 flex items-center gap-2 sm:gap-3">
+                  Analyze My Music DNA
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
+                <div className="absolute inset-0 translate-x-[-120%] bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent)] transition-transform duration-1000 group-hover:translate-x-[120%]" />
+              </SpotifyConnectButton>
+            </div>
 
           </div>
         </section>
@@ -366,18 +408,16 @@ export default function Home() {
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:bg-white/[0.05] hover:shadow-[0_0_60px_rgba(139,92,246,0.12)] sm:rounded-[2rem] sm:p-8"
               >
                 <div
-                  className={`absolute inset-0 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100 ${
-                    i === 0 ? "bg-fuchsia-500/10" : i === 1 ? "bg-violet-500/10" : "bg-cyan-500/10"
-                  }`}
+                  className={`absolute inset-0 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100 ${i === 0 ? "bg-fuchsia-500/10" : i === 1 ? "bg-violet-500/10" : "bg-cyan-500/10"
+                    }`}
                 />
                 <div
-                  className={`relative mb-4 text-5xl font-black transition-all duration-500 group-hover:scale-110 sm:mb-6 sm:text-6xl ${
-                    i === 0
+                  className={`relative mb-4 text-5xl font-black transition-all duration-500 group-hover:scale-110 sm:mb-6 sm:text-6xl ${i === 0
                       ? "text-fuchsia-400/25 group-hover:text-fuchsia-300/50"
                       : i === 1
-                      ? "text-violet-400/25 group-hover:text-violet-300/50"
-                      : "text-cyan-400/25 group-hover:text-cyan-300/50"
-                  }`}
+                        ? "text-violet-400/25 group-hover:text-violet-300/50"
+                        : "text-cyan-400/25 group-hover:text-cyan-300/50"
+                    }`}
                 >
                   0{i + 1}
                 </div>
@@ -429,23 +469,55 @@ export default function Home() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="relative pb-10 pt-12">
-          {/* Atmospheric top fade */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" aria-hidden />
-          <div className="pointer-events-none absolute -top-6 left-1/2 h-12 w-48 -translate-x-1/2 rounded-full bg-violet-500/[0.05] blur-2xl" aria-hidden />
+        <footer className="relative pb-16 pt-20" role="contentinfo">
 
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-6 text-center">
-            <p className="text-[9px] font-semibold uppercase tracking-[0.32em] text-white/20">
-              VibePrint
-            </p>
-            <p className="text-[9px] leading-relaxed tracking-[0.06em] text-white/13">
-              Your music knows you better than you do.
-            </p>
-            <div className="mt-1 flex items-center gap-4 text-[8px] uppercase tracking-[0.24em] text-white/[0.12]">
-              <a href="/privacy" className="transition-colors duration-300 hover:text-white/30">Privacy</a>
-              <span className="h-px w-2.5 bg-white/[0.07]" aria-hidden />
-              <a href="/terms" className="transition-colors duration-300 hover:text-white/30">Terms</a>
+          {/* Full-width spectral glow — visibly luminous separator */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-fuchsia-400/40 to-transparent" aria-hidden />
+          {/* Bloom behind the line */}
+          <div className="pointer-events-none absolute -top-12 left-1/2 h-24 w-[32rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-fuchsia-500/[0.12] via-violet-500/[0.16] to-cyan-500/[0.10] blur-3xl animate-breathe" aria-hidden />
+
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6 text-center">
+
+            {/* Waveform bar motif — ambient audio visual */}
+            <div className="flex items-end gap-[3px]" aria-hidden>
+              {[0.45, 0.7, 1.0, 0.6, 0.85, 0.5, 0.95, 0.65, 0.8, 0.4, 0.75, 1.0, 0.55, 0.7, 0.4].map((scale, i) => (
+                <div
+                  key={i}
+                  className="w-[2px] rounded-full bg-gradient-to-t from-fuchsia-400/50 to-violet-300/30 animate-waveform-pulse"
+                  style={{
+                    height: `${8 + scale * 20}px`,
+                    animationDelay: `${i * 0.12}s`,
+                    animationDuration: `${1.4 + (i % 5) * 0.22}s`,
+                  }}
+                />
+              ))}
             </div>
+
+            {/* Brand signature — prominent, editorial */}
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-sm font-bold uppercase tracking-[0.45em] text-white/55">
+                VibePrint
+              </p>
+              <p className="text-[13px] font-light leading-relaxed tracking-[0.03em] text-white/38 italic max-w-xs">
+                Your music knows you better than you do.
+              </p>
+            </div>
+
+            {/* Micro spectral divider */}
+            <div className="h-px w-12 bg-gradient-to-r from-transparent via-fuchsia-400/25 to-transparent" aria-hidden />
+
+            {/* Links — clearly legible */}
+            <div className="flex items-center gap-6 text-[10px] uppercase tracking-[0.28em] text-white/35">
+              <a href="/privacy" className="transition-colors duration-300 hover:text-white/65">Privacy</a>
+              <span className="h-3 w-px bg-white/[0.12]" aria-hidden />
+              <a href="/terms" className="transition-colors duration-300 hover:text-white/65">Terms</a>
+            </div>
+
+            {/* Copyright — whisper small */}
+            <p className="text-[9px] uppercase tracking-[0.22em] text-white/18">
+              © {new Date().getFullYear()} VibePrint
+            </p>
+
           </div>
         </footer>
 

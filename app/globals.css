@@ -139,6 +139,31 @@
   from { width: 0%; }
 }
 
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ring-spin-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes waveform-pulse {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.35; }
+  50%       { transform: scaleY(1.0); opacity: 1.0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 1.0;  transform: scale(1.08); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
 /* ── Animation utility classes ── */
 
 .animate-fade-up        { animation: var(--animate-fade-up); }
@@ -150,6 +175,11 @@
 .animate-breathe-slow   { animation: var(--animate-breathe-slow); }
 .animate-bar-fill       { animation: var(--animate-bar-fill); }
 .animate-scale-in       { animation: var(--animate-scale-in); }
+.animate-ring-spin         { animation: ring-spin         60s linear infinite; }
+.animate-ring-spin-reverse { animation: ring-spin-reverse  45s linear infinite; }
+.animate-waveform-pulse    { animation: waveform-pulse 1.8s ease-in-out infinite; }
+.animate-glow-pulse        { animation: glow-pulse    4.5s ease-in-out infinite; }
+.animate-float-y           { animation: float-y       7s   ease-in-out infinite; }
 
 /* ── Shared interaction classes ── */
 
@@ -193,7 +223,12 @@
   .animate-breathe,
   .animate-breathe-slow,
   .animate-bar-fill,
-  .animate-scale-in {
+  .animate-scale-in,
+  .animate-ring-spin,
+  .animate-ring-spin-reverse,
+  .animate-waveform-pulse,
+  .animate-glow-pulse,
+  .animate-float-y {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
