@@ -13,7 +13,6 @@ export function SpotifyConnectButton({ variant = "nav", className, children }: P
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "spotify",
       options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/spotify/callback`,
         scopes: [
           "user-read-private",
           "user-read-email",
